@@ -1,2 +1,1 @@
-# lienar-algebra
-🔛 coding the matrix
+## 📓 Coding the matrix

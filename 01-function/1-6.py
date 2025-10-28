@@ -23,3 +23,50 @@ print(movie_review("Interstellar"))
 from dictutil import listrange2dict
 
 print(listrange2dict(["A", "B", "C"]))
+
+f = open("stories_big.txt")
+stories_big = list(f)
+f = open("stories_small.txt")
+stories_small = list(f)
+
+
+# Task 1.6.6
+def makeInverseIndex(strlist: list) -> dict:
+    indexes = {}
+    keys = set()
+    for strings in strlist:
+        words = set(strings.split())
+        keys |= words
+    for key in keys:
+        indexes[key] = set()
+    for key in keys:
+        for i, strings in enumerate(strlist):
+            if key in strings:
+                indexes[key].add(i)
+    return indexes
+
+
+inverseIndex = makeInverseIndex(stories_small)
+query = ["secret", "the"]
+
+
+# Task 1.6.7
+def orSearch(inverseIndex: dict, query: list) -> set:
+    values = list()
+    for q in query:
+        values.append(inverseIndex[q])
+    return set.union(*values)
+
+
+print(orSearch(inverseIndex, query))
+
+
+# Task 1.6.8
+def andSearch(inverseIndex: dict, query: list) -> set:
+    values = list()
+    for q in query:
+        values.append(inverseIndex[q])
+    return set.intersection(*values)
+
+
+print(andSearch(inverseIndex, query))

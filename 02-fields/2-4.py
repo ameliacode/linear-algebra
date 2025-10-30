@@ -28,4 +28,62 @@ plot({z * -1j * 0.5 for z in S}, 4)
 plot({z * -1j * 0.5 + (2 - 1j) for z in S}, 4)
 
 # Task 2.4.10
-file2image("img01.png")
+data = file2image("img01.png")
+height, width = len(data), len(data[0])
+
+pts = []
+for y in range(height):
+    for x in range(width):
+        if data[y][x][0] < 120:
+            pts.append(x - y * 1j + height * 1j)
+
+plot(pts, 190)
+
+
+# Task 2.4.11
+def f(z: complex) -> list:
+    pts = []
+    for s in S:
+        pts.append(s + z)
+    return pts
+
+
+z = 1 + 2j
+plot(f(z), 4)
+
+
+# Task 2.4.12
+def scale(factor: float) -> list:
+    pts = []
+    for s in S:
+        pts.append(s * -1j * factor)
+    return pts
+
+
+plot(scale(0.5), 4)
+
+# Task 2.4.17
+import math
+
+
+def w(t: int) -> complex:
+    return math.e ** (t * 2 * math.pi * 1j / 20)
+
+
+plot({w(i) for i in range(20)}, 4)
+
+
+# Task 2.4.18
+plot({math.e ** (math.pi * 1j / 4) * s for s in S}, 4)
+
+# Task 2.4.19
+plot({math.e ** (math.pi * 1j / 4) * pt for pt in pts}, 190)
+
+# TAsk 2.4.20
+plot(
+    {
+        math.e ** (math.pi * 1j / 4) * (pt - width / 2 - height / 2 * 1j) * 0.5
+        for pt in pts
+    },
+    190,
+)

@@ -1,5 +1,9 @@
 import cmath
 import math
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Task 1.6.1
 print(cmath.sqrt(-1), math.cos(math.pi), math.log(math.e))
@@ -20,7 +24,7 @@ print(movie_review("Interstellar"))
 # from imp import reload -> DeprecationWarning: removal in Python 3.12
 
 # Task 1.6.4
-from dictutil import listrange2dict
+from utils.dictutil import listrange2dict
 
 print(listrange2dict(["A", "B", "C"]))
 

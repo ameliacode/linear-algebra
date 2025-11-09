@@ -1,5 +1,10 @@
-from image import file2image
-from plotting import plot
+import os
+import sys
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+from utils.image import file2image
+from utils.plotting import plot
 
 # Task 2.4.1
 S = {
